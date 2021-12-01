@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>日志级别动态调整</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+            integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+            crossorigin="anonymous"></script>
+
+</head>
+<body>
+<form>
+    <div class="row">
+        <div class="col-md-2">
+            <select id="logLevel" class="form-control">
+                <option value="TRACE">TRACE</option>
+                <option value="DEBUG">DEBUG</option>
+                <option value="INFO">INFO</option>
+                <option value="WARN">WARN</option>
+                <option value="ERROR">ERROR</option>
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <div class="btn-toolbar" role="toolbar">
+                <div class="btn-group">
+                    <button class="btn btn-primary" type="button"
+                            id="adjust">调整
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+<script type="application/javascript">
+    $("#adjust").on("click", function () {
+        var logLevel = $("#logLevel").val();
+        $.get("/adjust/log/level?level=" + logLevel, function (data, status) {
+
+        });
+    })
+</script>
+</html>
